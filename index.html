@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d20">
+  <title>AI Space — каталог ИИ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">✦ AI Space</a>
+    <nav>
+      <a href="#catalog">Каталог</a>
+      <a href="#prompts">Промпты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">ТВОЯ ВСЕЛЕННАЯ ИСКУССТВЕННОГО ИНТЕЛЛЕКТА</span>
+        <h1>Найди свой<br><span>идеальный ИИ</span></h1>
+        <p>30 популярных ИИ-сервисов для учёбы, творчества, программирования и работы. Сравнивай, фильтруй и выбирай.</p>
+        <a class="primary-btn" href="#catalog">Исследовать каталог ↗</a>
+        <div class="hero-stats">
+          <div><strong>30</strong><span>сервисов</span></div>
+          <div><strong>12</strong><span>тегов</span></div>
+          <div><strong>∞</strong><span>идей для проектов</span></div>
+        </div>
+      </div>
+      <div class="orb" aria-hidden="true">
+        <div class="orb-core">AI</div>
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+        <span class="orbit orbit-three"></span>
+        <span class="planet planet-one">✦</span>
+        <span class="planet planet-two">✧</span>
+        <span class="planet planet-three">AI</span>
+      </div>
+    </section>
+
+    <section class="section catalog" id="catalog">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">БИБЛИОТЕКА ИНСТРУМЕНТОВ</span>
+          <h2>Каталог ИИ</h2>
+          <p>Используй поиск, фильтры и несколько тегов одновременно.</p>
+        </div>
+        <span class="result-count" id="result-count">30 сервисов</span>
+      </div>
+
+      <div class="filter-panel">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="Найти ИИ по названию или задаче…" autocomplete="off">
+        </label>
+
+        <div class="filter-grid">
+          <label class="filter-field">
+            <span>Тип сервиса</span>
+            <select id="type-filter">
+              <option value="all">Все типы</option>
+              <option value="chat">Чат-боты</option>
+              <option value="search">Поиск и исследования</option>
+              <option value="image">Изображения и дизайн</option>
+              <option value="code">Программирование</option>
+              <option value="video">Видео и аудио</option>
+              <option value="open">Открытые модели</option>
+              <option value="writing">Тексты и документы</option>
+            </select>
+          </label>
+
+          <label class="filter-field">
+            <span>Доступ</span>
+            <select id="price-filter">
+              <option value="all">Любой</option>
+              <option value="free">Есть бесплатный доступ</option>
+              <option value="freemium">Бесплатно с ограничениями</option>
+              <option value="paid">Платный доступ</option>
+            </select>
+          </label>
+
+          <label class="filter-field">
+            <span>Задача</span>
+            <select id="task-filter">
+              <option value="all">Любая задача</option>
+              <option value="study">Учёба</option>
+              <option value="writing">Написание текстов</option>
+              <option value="research">Исследования</option>
+              <option value="code">Код</option>
+              <option value="visual">Визуальный контент</option>
+              <option value="work">Работа</option>
+              <option value="audio">Музыка и звук</option>
+            </select>
+          </label>
+
+          <label class="filter-field">
+            <span>Сортировка</span>
+            <select id="sort-filter">
+              <option value="default">По умолчанию</option>
+              <option value="az">По названию А—Я</option>
+              <option value="za">По названию Я—А</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="tag-heading">
+          <span>Теги — выбери один или несколько</span>
+          <button type="button" class="text-btn" id="clear-tags">Снять теги</button>
+        </div>
+
+        <div class="tag-list" id="tag-list">
+          <button type="button" class="tag" data-tag="поиск в интернете" aria-pressed="false">Поиск в интернете</button>
+          <button type="button" class="tag" data-tag="код" aria-pressed="false">Код</button>
+          <button type="button" class="tag" data-tag="изображения" aria-pressed="false">Изображения</button>
+          <button type="button" class="tag" data-tag="документы" aria-pressed="false">Документы</button>
+          <button type="button" class="tag" data-tag="учёба" aria-pressed="false">Учёба</button>
+          <button type="button" class="tag" data-tag="открытая модель" aria-pressed="false">Открытые модели</button>
+          <button type="button" class="tag" data-tag="голос" aria-pressed="false">Голос</button>
+          <button type="button" class="tag" data-tag="видео" aria-pressed="false">Видео</button>
+          <button type="button" class="tag" data-tag="анализ данных" aria-pressed="false">Анализ данных</button>
+          <button type="button" class="tag" data-tag="тексты" aria-pressed="false">Тексты</button>
+          <button type="button" class="tag" data-tag="музыка" aria-pressed="false">Музыка</button>
+          <button type="button" class="tag" data-tag="дизайн" aria-pressed="false">Дизайн</button>
+        </div>
+
+        <div class="active-filters" id="active-filters"></div>
+        <button type="button" class="reset-btn" id="reset-filters">↺ Сбросить все фильтры</button>
+      </div>
+
+      <div class="card-grid" id="card-grid">
+        <article class="ai-card" data-name="ChatGPT" data-type="chat writing" data-price="freemium" data-task="study writing research code visual work" data-tags="тексты код изображения голос документы учёба анализ данных поиск в интернете">
+          <div class="card-top"><span class="ai-icon purple">✳</span><span class="status">Бесплатно + платно</span></div>
+          <h3>ChatGPT</h3>
+          <p>Универсальный помощник для идей, объяснений, текстов, анализа и кода.</p>
+          <div class="card-tags"><span>Тексты</span><span>Учёба</span><span>Код</span></div>
+          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Claude" data-type="chat writing" data-price="freemium" data-task="study writing research code work" data-tags="тексты код документы учёба анализ данных">
+          <div class="card-top"><span class="ai-icon peach">✳</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Claude</h3>
+          <p>Помощник для длинных текстов, анализа документов и программирования.</p>
+          <div class="card-tags"><span>Документы</span><span>Код</span><span>Тексты</span></div>
+          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Google Gemini" data-type="chat search" data-price="freemium" data-task="study writing research code visual work" data-tags="поиск в интернете изображения голос документы учёба тексты анализ данных">
+          <div class="card-top"><span class="ai-icon blue">✦</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Google Gemini</h3>
+          <p>ИИ-помощник Google для вопросов, идей, исследований и мультимодальных задач.</p>
+          <div class="card-tags"><span>Поиск</span><span>Учёба</span><span>Анализ</span></div>
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Microsoft Copilot" data-type="chat search writing" data-price="freemium" data-task="study writing research visual work" data-tags="поиск в интернете документы изображения учёба тексты анализ данных">
+          <div class="card-top"><span class="ai-icon cyan">◈</span><span class="status">Есть бесплатный доступ</span></div>
+          <h3>Microsoft Copilot</h3>
+          <p>Помощник для поиска, идей и задач в экосистеме Microsoft.</p>
+          <div class="card-tags"><span>Работа</span><span>Поиск</span><span>Документы</span></div>
+          <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="DeepSeek" data-type="chat code" data-price="free" data-task="study writing research code" data-tags="код тексты учёба анализ данных">
+          <div class="card-top"><span class="ai-icon navy">◉</span><span class="status">Есть бесплатный доступ</span></div>
+          <h3>DeepSeek</h3>
+          <p>ИИ для логических задач, объяснений, математики и программирования.</p>
+          <div class="card-tags"><span>Логика</span><span>Код</span><span>Учёба</span></div>
+          <a href="https://www.deepseek.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Perplexity" data-type="search" data-price="freemium" data-task="study research work" data-tags="поиск в интернете учёба документы анализ данных">
+          <div class="card-top"><span class="ai-icon slate">⌕</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Perplexity</h3>
+          <p>Поисковый ИИ для изучения тем и поиска источников.</p>
+          <div class="card-tags"><span>Поиск</span><span>Источники</span><span>Учёба</span></div>
+          <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Grok" data-type="chat search" data-price="freemium" data-task="writing research work" data-tags="поиск в интернете тексты анализ данных">
+          <div class="card-top"><span class="ai-icon gray">𝕏</span><span class="status">Доступ зависит от тарифа</span></div>
+          <h3>Grok</h3>
+          <p>Разговорный ИИ от xAI для вопросов, анализа и поиска информации.</p>
+          <div class="card-tags"><span>Чат</span><span>Поиск</span><span>Анализ</span></div>
+          <a href="https://grok.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Meta AI" data-type="chat" data-price="free" data-task="writing visual work" data-tags="изображения тексты голос">
+          <div class="card-top"><span class="ai-icon blue">∞</span><span class="status">Доступность зависит от региона</span></div>
+          <h3>Meta AI</h3>
+          <p>Ассистент Meta для общения, генерации идей и творческих задач.</p>
+          <div class="card-tags"><span>Чат</span><span>Идеи</span><span>Изображения</span></div>
+          <a href="https://www.meta.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Mistral Le Chat" data-type="chat search" data-price="freemium" data-task="study writing research code work" data-tags="тексты код учёба поиск в интернете документы">
+          <div class="card-top"><span class="ai-icon orange">M</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Mistral Le Chat</h3>
+          <p>Универсальный чат-ассистент для текста, поиска и рабочих задач.</p>
+          <div class="card-tags"><span>Чат</span><span>Работа</span><span>Код</span></div>
+          <a href="https://chat.mistral.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Qwen" data-type="chat code open" data-price="freemium" data-task="study writing research code" data-tags="код тексты учёба открытая модель анализ данных">
+          <div class="card-top"><span class="ai-icon violet">Q</span><span class="status">Есть бесплатный доступ</span></div>
+          <h3>Qwen</h3>
+          <p>Семейство моделей для диалога, анализа, текста и программирования.</p>
+          <div class="card-tags"><span>Модели</span><span>Код</span><span>Учёба</span></div>
+          <a href="https://qwen.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Llama" data-type="open chat code" data-price="free" data-task="study research code work" data-tags="открытая модель код анализ данных">
+          <div class="card-top"><span class="ai-icon green">◉</span><span class="status">Открытые модели</span></div>
+          <h3>Llama</h3>
+          <p>Семейство моделей Meta для различных задач и разработческих сценариев.</p>
+          <div class="card-tags"><span>Открытые модели</span><span>Код</span></div>
+          <a href="https://www.llama.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="HuggingChat" data-type="open chat" data-price="free" data-task="study research code" data-tags="открытая модель код учёба">
+          <div class="card-top"><span class="ai-icon yellow">🤗</span><span class="status">Есть бесплатный доступ</span></div>
+          <h3>HuggingChat</h3>
+          <p>Чат-интерфейс для знакомства с открытыми языковыми моделями.</p>
+          <div class="card-tags"><span>Открытые модели</span><span>Учёба</span></div>
+          <a href="https://huggingface.co/chat/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="GitHub Copilot" data-type="code" data-price="freemium" data-task="study code work" data-tags="код">
+          <div class="card-top"><span class="ai-icon gray">⌘</span><span class="status">Есть бесплатный тариф</span></div>
+          <h3>GitHub Copilot</h3>
+          <p>ИИ-помощник разработчика для подсказок и работы с кодом.</p>
+          <div class="card-tags"><span>Код</span><span>Разработка</span></div>
+          <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Cursor" data-type="code" data-price="freemium" data-task="study code work" data-tags="код">
+          <div class="card-top"><span class="ai-icon violet">⌁</span><span class="status">Бесплатно с ограничениями</span></div>
+          <h3>Cursor</h3>
+          <p>Редактор кода со встроенными ИИ-инструментами для разработки.</p>
+          <div class="card-tags"><span>Код</span><span>Разработка</span></div>
+          <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Midjourney" data-type="image" data-price="paid" data-task="visual work" data-tags="изображения дизайн">
+          <div class="card-top"><span class="ai-icon pink">✺</span><span class="status">Платный доступ</span></div>
+          <h3>Midjourney</h3>
+          <p>Генерация художественных изображений по текстовым описаниям.</p>
+          <div class="card-tags"><span>Изображения</span><span>Дизайн</span></div>
+          <a href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Adobe Firefly" data-type="image" data-price="freemium" data-task="visual work" data-tags="изображения дизайн">
+          <div class="card-top"><span class="ai-icon orange">✦</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Adobe Firefly</h3>
+          <p>Инструменты генерации и редактирования изображений для дизайна.</p>
+          <div class="card-tags"><span>Дизайн</span><span>Изображения</span></div>
+          <a href="https://firefly.adobe.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Leonardo AI" data-type="image" data-price="freemium" data-task="visual work" data-tags="изображения дизайн">
+          <div class="card-top"><span class="ai-icon green">◈</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Leonardo AI</h3>
+          <p>Создание визуальных концепций, иллюстраций и игровых ассетов.</p>
+          <div class="card-tags"><span>Изображения</span><span>Дизайн</span></div>
+          <a href="https://leonardo.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Ideogram" data-type="image" data-price="freemium" data-task="visual work" data-tags="изображения дизайн">
+          <div class="card-top"><span class="ai-icon pink">I</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Ideogram</h3>
+          <p>Генерация графики, постеров и изображений с текстовыми элементами.</p>
+          <div class="card-tags"><span>Дизайн</span><span>Постеры</span></div>
+          <a href="https://ideogram.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Runway" data-type="video" data-price="freemium" data-task="visual work" data-tags="видео изображения">
+          <div class="card-top"><span class="ai-icon purple">▶</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Runway</h3>
+          <p>ИИ-инструменты для создания и редактирования видеоконтента.</p>
+          <div class="card-tags"><span>Видео</span><span>Творчество</span></div>
+          <a href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Suno" data-type="video" data-price="freemium" data-task="audio visual" data-tags="музыка голос">
+          <div class="card-top"><span class="ai-icon orange">♫</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Suno</h3>
+          <p>Создание музыкальных композиций и песен по описанию.</p>
+          <div class="card-tags"><span>Музыка</span><span>Аудио</span></div>
+          <a href="https://suno.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="NotebookLM" data-type="writing search" data-price="free" data-task="study research work" data-tags="документы учёба анализ данных">
+          <div class="card-top"><span class="ai-icon blue">▤</span><span class="status">Есть бесплатный доступ</span></div>
+          <h3>NotebookLM</h3>
+          <p>Помогает изучать загруженные материалы и делать выводы по источникам.</p>
+          <div class="card-tags"><span>Документы</span><span>Учёба</span></div>
+          <a href="https://notebooklm.google.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Poe" data-type="chat" data-price="freemium" data-task="study writing research" data-tags="тексты учёба">
+          <div class="card-top"><span class="ai-icon violet">P</span><span class="status">Бесплатно с ограничениями</span></div>
+          <h3>Poe</h3>
+          <p>Платформа для общения с разными ИИ-моделями в одном месте.</p>
+          <div class="card-tags"><span>Чат</span><span>Модели</span></div>
+          <a href="https://poe.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Character.AI" data-type="chat" data-price="freemium" data-task="writing" data-tags="тексты голос">
+          <div class="card-top"><span class="ai-icon pink">☺</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Character.AI</h3>
+          <p>Диалоговая платформа с виртуальными персонажами и сценариями.</p>
+          <div class="card-tags"><span>Диалоги</span><span>Творчество</span></div>
+          <a href="https://character.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Canva Magic Studio" data-type="image writing" data-price="freemium" data-task="visual writing work" data-tags="изображения дизайн тексты">
+          <div class="card-top"><span class="ai-icon cyan">C</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Canva Magic Studio</h3>
+          <p>ИИ-функции для презентаций, графики и визуального оформления.</p>
+          <div class="card-tags"><span>Дизайн</span><span>Презентации</span></div>
+          <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Grammarly" data-type="writing" data-price="freemium" data-task="writing study work" data-tags="тексты документы">
+          <div class="card-top"><span class="ai-icon green">G</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Grammarly</h3>
+          <p>Помощник для редактирования текстов, грамматики и стиля.</p>
+          <div class="card-tags"><span>Тексты</span><span>Редактура</span></div>
+          <a href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="DeepL" data-type="writing" data-price="freemium" data-task="study writing work" data-tags="тексты документы учёба">
+          <div class="card-top"><span class="ai-icon blue">文</span><span class="status">Бесплатно с ограничениями</span></div>
+          <h3>DeepL</h3>
+          <p>Переводчик и инструменты для улучшения формулировок на разных языках.</p>
+          <div class="card-tags"><span>Перевод</span><span>Тексты</span></div>
+          <a href="https://www.deepl.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="ElevenLabs" data-type="video" data-price="freemium" data-task="audio work" data-tags="голос">
+          <div class="card-top"><span class="ai-icon orange">♫</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>ElevenLabs</h3>
+          <p>Генерация речи, озвучивание и инструменты работы с аудио.</p>
+          <div class="card-tags"><span>Голос</span><span>Аудио</span></div>
+          <a href="https://elevenlabs.io/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Kling AI" data-type="video" data-price="freemium" data-task="visual work" data-tags="видео изображения">
+          <div class="card-top"><span class="ai-icon cyan">▶</span><span class="status">Бесплатные лимиты</span></div>
+          <h3>Kling AI</h3>
+          <p>Генерация видео по текстовым описаниям и изображениям.</p>
+          <div class="card-tags"><span>Видео</span><span>Генерация</span></div>
+          <a href="https://klingai.com/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="DALL·E" data-type="image" data-price="freemium" data-task="visual work" data-tags="изображения дизайн">
+          <div class="card-top"><span class="ai-icon purple">✧</span><span class="status">Доступ зависит от платформы</span></div>
+          <h3>DALL·E</h3>
+          <p>Модель генерации изображений по текстовым описаниям.</p>
+          <div class="card-tags"><span>Изображения</span><span>Идеи</span></div>
+          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Открыть ChatGPT ↗</a>
+        </article>
+
+        <article class="ai-card" data-name="Blackbox AI" data-type="code chat" data-price="freemium" data-task="study code work" data-tags="код">
+          <div class="card-top"><span class="ai-icon gray">▣</span><span class="status">Бесплатно + платно</span></div>
+          <h3>Blackbox AI</h3>
+          <p>ИИ-инструменты для разработчиков и помощи при написании кода.</p>
+          <div class="card-tags"><span>Код</span><span>Разработка</span></div>
+          <a href="https://www.blackbox.ai/" target="_blank" rel="noopener noreferrer">Открыть сервис ↗</a>
+        </article>
+      </div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <span>✧</span>
+        <h3>Ничего не найдено</h3>
+        <p>Попробуй убрать один из фильтров или выбрать меньше тегов.</p>
+        <button type="button" class="primary-btn" id="empty-reset">Сбросить фильтры</button>
+      </div>
+
+      <p class="fine-print">Каталог не является рейтингом. Тарифы, бесплатные лимиты и доступность могут меняться — проверяй их на официальных сайтах.</p>
+    </section>
+
+    <section class="section prompts" id="prompts">
+      <span class="eyebrow">УМЕЙ ОБЩАТЬСЯ С ИИ</span>
+      <h2>Руководство по написанию промптов</h2>
+      <p class="section-intro">Промпт — инструкция для ИИ. Чем яснее задача и ожидаемый результат, тем полезнее обычно ответ.</p>
+
+      <div class="prompt-layout">
+        <div class="prompt-main">
+          <h3>Формула хорошего промпта</h3>
+          <div class="formula">
+            <div><span>1</span><p><strong>Роль</strong><small>Кем должен выступить ИИ?</small></p></div>
+            <div><span>2</span><p><strong>Задача</strong><small>Что именно нужно сделать?</small></p></div>
+            <div><span>3</span><p><strong>Контекст</strong><small>Какая информация важна?</small></p></div>
+            <div><span>4</span><p><strong>Формат</strong><small>Список, таблица, план или текст?</small></p></div>
+            <div><span>5</span><p><strong>Ограничения</strong><small>Объём, язык и уровень сложности.</small></p></div>
+          </div>
+
+          <h3>Пример: от слабого запроса к хорошему</h3>
+          <div class="example-box weak">
+            <span class="example-label">СЛАБЫЙ ПРОМПТ</span>
+            <p>«Расскажи про космос».</p>
+          </div>
+          <div class="example-box strong">
+            <span class="example-label">УЛУЧШЕННЫЙ ПРОМПТ</span>
+            <p id="prompt-example">Выступи в роли научного преподавателя. Объясни строение Солнечной системы школьнику простым языком. Расскажи о Солнце, планетах и различиях между ними. Используй заголовки и нумерованный список. Приведи три интересных факта. Избегай сложных терминов, а если используешь их — объясняй.</p>
+            <button type="button" class="primary-btn" id="copy-example">Копировать пример</button>
+            <span id="copy-status" class="copy-status" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <aside class="prompt-side">
+          <h3>Полезные советы</h3>
+          <ul>
+            <li>Пиши конкретно, избегай расплывчатых формулировок.</li>
+            <li>Разбивай большие задачи на этапы.</li>
+            <li>Указывай уровень знаний и аудиторию.</li>
+            <li>Проси примеры, если объяснение непонятно.</li>
+            <li>Уточняй ответ, если результат не подходит.</li>
+            <li>Проверяй важные факты по надёжным источникам.</li>
+            <li>Не отправляй пароли и конфиденциальные данные.</li>
+          </ul>
+          <div class="tip-box">
+            <strong>Подсказка</strong>
+            <p>Если ответ слишком сложный, попроси: «Объясни проще и приведи один пример». Если нужен другой формат — попроси таблицу или список.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">✦ AI Space</a>
+    <p>Исследуй возможности ИИ. Думай критически. Создавай своё.</p>
+    <span>Информационный каталог · 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
